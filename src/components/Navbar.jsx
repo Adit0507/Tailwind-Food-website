@@ -1,9 +1,14 @@
-import React, {useState} from "react";
-import { AiOutlineMenu, AiOutlineSearch, AiOutlineClose, AiFillTag } from "react-icons/ai";
+import React, { useState } from "react";
+import {
+  AiOutlineMenu,
+  AiOutlineSearch,
+  AiOutlineClose,
+  AiFillTag,
+} from "react-icons/ai";
 import { TbTruckDelivery } from "react-icons/tb";
 import { BsFillCartFill, BsFillSaveFill } from "react-icons/bs";
-import {MdFavorite, MdHelp} from "react-icons/md";
-import {FaWallet, FaUserFriends} from "react-icons/fa";
+import { MdFavorite, MdHelp } from "react-icons/md";
+import { FaWallet, FaUserFriends } from "react-icons/fa";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -11,7 +16,7 @@ const Navbar = () => {
   return (
     <div className="max-w-[1640px] mx-auto flex justify-between items-center p-4">
       <div className="flex items-center">
-        <div>
+        <div onClick={() => setNav(!nav)} className="cursor-pointer">
           <AiOutlineMenu size={30} />
         </div>
         <h1 className="text-2xl sm:text-3xl lg:text-4xl px-2">
@@ -42,11 +47,23 @@ const Navbar = () => {
       {/* Mobile Menu  */}
       {/* black/80 is the opacity  */}
       {/* Overlay  */}
-      <div className="bg-black/70 fixed w-full h-screen z-10 top-0 left-0"></div>
+      {nav ? (
+        <div className="bg-black/70 fixed w-full h-screen z-10 top-0 left-0"></div>
+      ) : (
+        ""
+      )}
 
       {/* Side drawer menu */}
-      <div className="fixed top-0 left-0 w-[300px] h-screen bg-white z-10 duration-300">
+      <div
+        className={
+          nav
+            ? "fixed top-0 left-0 w-[300px] h-screen bg-white z-10 duration-300"
+            : "fixed top-0 left-[-100%] w-[300px] h-screen bg-white z-10 duration-300"
+        }
+      >
+        {/* Working of the close sign on Navbar */}
         <AiOutlineClose
+          onClick={() => setNav(!nav)}
           size={20}
           className="absolute right-4 top-4 cursor-pointer"
         />
