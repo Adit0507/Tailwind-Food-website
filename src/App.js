@@ -11,7 +11,7 @@ function App() {
       <Hero />
       <HeadlineCards />
       <Food />
-      <Category />
+      <Category />  
     </div>
   );
 }
